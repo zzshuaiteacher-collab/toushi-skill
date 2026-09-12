@@ -1,0 +1,6 @@
+interface:
+  display_name: "偷师"
+  short_description: "先看完整架构、逐层执行与接口，再逐项验货并改造成自己的工作流"
+  default_prompt: "使用 $toushi 拆解这个项目：先画完整架构、逐层展开执行分支与真实接口，再逐项验货并化为我的工作流，输出清新浅色的 HTML 和 Markdown 报告。"
+policy:
+  allow_implicit_invocation: true
