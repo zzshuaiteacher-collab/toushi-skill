@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{{报告标题}}</title>
+<style>
+:root{--page:#F7F5EF;--card:#fff;--ink:#263238;--muted:#60717A;--line:#DDE7E3;--mint:#4E8C80;--sky:#73A8C7;--sun:#E6B85C}
+*{box-sizing:border-box}body{margin:0;background:var(--page);color:var(--ink);font:17px/1.8 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif}main{max-width:1160px;margin:auto;padding:32px 24px 60px}header{background:linear-gradient(120deg,#eaf4ec,#edf4f8);border-radius:22px;padding:32px;margin-bottom:22px}h1{font-size:clamp(28px,4vw,42px);line-height:1.35;margin:8px 0 18px}h2{font-size:26px;line-height:1.5}h3{font-size:20px}a{color:#29695d;overflow-wrap:anywhere}p,li,td,th{overflow-wrap:anywhere}.muted,.evidence{color:var(--muted);font-size:15px}nav{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0}nav a{background:#fff;border:1px solid var(--line);padding:7px 13px;border-radius:10px;text-decoration:none}section{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px;margin:20px 0;scroll-margin-top:20px}section>h2:first-child{margin-top:0}.scroll{max-width:100%;overflow-x:auto;padding-bottom:6px}table{border-collapse:collapse;width:100%;min-width:680px}td,th{padding:12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}th{background:#f4f5ed}pre{overflow-x:auto;background:#f4f6f3;padding:16px;border-radius:10px;font-size:14px}code{overflow-wrap:anywhere}details{border:1px solid var(--line);border-radius:10px;padding:12px;margin:12px 0}summary{cursor:pointer;color:#29695d;font-weight:600}.note{border-left:4px solid var(--sun);padding:10px 16px;background:#fff9eb}.flow{max-width:100%;margin:18px 0}.node{background:#eef6f0;border:1px solid #cbded1;border-radius:12px;padding:16px 20px;min-width:0}.node strong{display:block}.handoff{text-align:center;color:#356e61;padding:9px;line-height:1.5;overflow-wrap:anywhere}.handoff:after{content:"↓";display:block;font-size:24px}.branch{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.branch .node{background:#edf5fa}.branch-label{font-size:15px;color:#6b5c35}.end{background:#fff5df}.diagram svg{display:block;max-width:100%;height:auto}.badge{color:#356e61;font-weight:650}footer{font-size:14px;color:var(--muted);margin-top:28px}@media(max-width:640px){main{padding:16px 12px 32px}header,section{padding:20px 16px}.branch{grid-template-columns:1fr}h2{font-size:23px}body{font-size:16px}}
+</style>
+</head>
+<body><main>
+<!-- 替换所有双大括号标记；不执行目标仓库。节点数量与关系由源码决定。 -->
+<header><span class="badge">偷师 · 完整架构与化用</span><h1>{{报告标题}}</h1><p>{{一句话结论}}</p><p class="muted">{{来源版本与阅读边界}}</p></header>
+<nav aria-label="报告目录"><a href="#architecture">完整架构</a><a href="#layers">逐层展开</a><a href="#routes">执行链路</a><a href="#interfaces">接口与依赖</a><a href="#adaptation">逐项验货</a><a href="#own">我的现状</a><a href="#merged">合一方案</a><a href="#sources">来源与验证</a></nav>
+<section id="architecture"><h2>01 · 完整架构</h2><p>{{架构白话解释}}</p>
+<!-- 可重复的纵向流程组件：按实际调用/提示词协议填图，不能把样例视为固定流程。 -->
+<div class="flow" role="group" aria-label="完整架构流程图">
+<div class="node"><strong><a href="#layer-entry">{{入口编号与名称}}</a></strong>{{输入与动作}}</div>
+<div class="handoff">{{交给下一层的具体材料}}</div>
+<div class="branch">
+<div class="node"><span class="branch-label">{{分支条件一}}</span><strong>{{分支一动作}}</strong>{{分支一产物及下一站}}</div>
+<div class="node"><span class="branch-label">{{分支条件二}}</span><strong>{{分支二动作}}</strong>{{分支二产物及下一站}}</div>
+</div>
+<!-- 仅在两个分支真实汇合时保留这一箭头；失败退出/回退须另画并写明目的节点。 -->
+<div class="handoff">{{汇合条件与交接产物}}</div>
+<div class="node end"><strong>{{实际终点}}</strong>{{结果或停止条件}}</div>
+</div><p class="evidence">{{图的来源与关系类型}}</p></section>
+<section id="layers"><h2>02 · 每层为什么这样做</h2><article id="layer-entry">{{全部主要层：输入、动作、原因、判断、回退、产物、交给谁、证据}}</article></section>
+<section id="routes"><h2>03 · 一次请求怎样走到底</h2>{{代表性请求及主要模式、条件分支与回退图}}</section>
+<section id="interfaces"><h2>04 · 接口、数据与依赖</h2>{{真实接口说明与数据交接}}<details><summary>完整接口与证据明细</summary><div class="scroll">{{完整接口表：参数、默认值、输入、输出、副作用、来源}}</div></details><p>{{限制与术语白话解释}}</p></section>
+<section id="adaptation"><h2>05 · 逐项验货：拿什么、怎么改、什么先别碰</h2><div class="scroll"><table><thead><tr><th>对方模块</th><th>处理</th><th>留下的核心</th><th>改造后的去处</th></tr></thead><tbody>{{验货表行}}</tbody></table></div><p class="note">{{为什么不照搬整条链}}</p><div class="scroll">{{硬前提核对表}}</div></section>
+<section id="own"><h2>06 · 我本来就在做什么</h2>{{独立的用户真实流程、证据及计划与现实的差异}}</section>
+<section id="merged"><h2>07 · 合一后的我的版本</h2>{{合一流程、每个改动来源与原因}}<p class="note">{{缺口、下一步与人工决策门}}</p></section>
+<section id="sources"><h2>08 · 来源与验证边界</h2>{{文件行号证据索引、实际检查结果、未验证项与阶段用时}}</section>
+<footer>源码事实、设计解释与化用提案分别标注；提案不等于已经实施。</footer>
+</main></body></html>
